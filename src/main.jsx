@@ -6,7 +6,22 @@ import { MantineProvider } from '@mantine/core';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-        <MantineProvider withGlobalStyles withNormalizeCss>
+        <MantineProvider
+            withGlobalStyles
+            withNormalizeCss
+            theme={{
+                globalStyles: (_theme) => ({
+                    body: {
+                        width: '100vw',
+                        height: '100vh',
+                    },
+                    '#root': {
+                        width: '100%',
+                        height: '100%',
+                    },
+                }),
+            }}
+        >
             <App />
         </MantineProvider>
     </React.StrictMode>
