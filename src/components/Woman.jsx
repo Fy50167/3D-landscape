@@ -1,5 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { useGLTF, useAnimations } from '@react-three/drei';
+import { useCharacterAnimations } from '../contexts/CharacterAnimations';
 
 export default function Woman(props) {
     const halo = useRef();
