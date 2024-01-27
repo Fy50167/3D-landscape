@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import Button from './Button';
 
 export default function Experience() {
+    const [activeButton, setActiveButton] = useState('');
     const animations = [
         'Animation 1',
         'Animation 2',
@@ -11,9 +11,16 @@ export default function Experience() {
 
     return (
         <div className='animation-controls'>
-            <button className='btn'>Animation 2</button>
-            <button className='btn'>Animation 3</button>
-            <button className='btn'>Animation 4</button>
+            {animations.map((button) => (
+                <input
+                    type='button'
+                    className={`btn ${activeButton == button ? 'active' : ''}`}
+                    id={button}
+                    key={button}
+                    value={button}
+                    onClick={() => setActiveButton(button)}
+                />
+            ))}
         </div>
     );
 }
