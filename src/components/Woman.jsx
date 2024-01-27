@@ -1,6 +1,8 @@
 import { useRef, useEffect } from 'react';
 import { useGLTF, useAnimations } from '@react-three/drei';
 import { useCharacterAnimations } from '../contexts/CharacterAnimations';
+import { useFrame } from '@react-three/fiber';
+import { easing } from 'maath';
 
 export default function Woman(props) {
     const halo = useRef();
@@ -19,6 +21,20 @@ export default function Woman(props) {
             actions[names[animationIndex]].fadeOut(0.5);
         };
     }, [animationIndex]);
+
+    useFrame((state, delta) => {
+        if (animationIndex === 0) {
+            easing.dampC(halo.current.material.color, 'hotpink', 0.2, delta);
+        } else if (animationIndex === 1) {
+            easing.dampC(halo.current.material.color, 'red', 0.2, delta);
+        } else if (animationIndex === 2) {
+            easing.dampC(halo.current.material.color, 'green', 0.2, delta);
+        } else if (animationIndex === 3) {
+            easing.dampC(halo.current.material.color, 'aquamarine', 0.2, delta);
+        } else if (animationIndex === 4) {
+            easing.dampC(halo.current.material.color, 'white', 0.2, delta);
+        }
+    });
 
     return (
         <group ref={group} {...props} dispose={null}>
