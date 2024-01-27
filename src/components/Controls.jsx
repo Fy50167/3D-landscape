@@ -1,17 +1,16 @@
 import { useState } from 'react';
-import { useCharacterAnimations } from "../contexts/CharacterAnimations";
+import { useCharacterAnimations } from '../contexts/CharacterAnimations';
 
 export default function Experience() {
-    const [activeButton, setActiveButton] = useState('');
+    const [activeButton, setActiveButton] = useState('GuitarPlaying');
 
     const { animations, animationIndex, setAnimationIndex } =
-    useCharacterAnimations();
+        useCharacterAnimations();
 
-    const setAnimation = (button, animation) {
+    const setAnimation = (button, animation) => {
         setActiveButton(button);
         setAnimationIndex(animation);
-    }
-
+    };
 
     return (
         <div className='animation-controls'>

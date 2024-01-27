@@ -5,13 +5,20 @@ import { useCharacterAnimations } from '../contexts/CharacterAnimations';
 export default function Woman(props) {
     const halo = useRef();
     const group = useRef();
-    const { setAnimations } = useCharacterAnimations();
+    const { setAnimations, animationIndex } = useCharacterAnimations();
     const { nodes, materials, animations } = useGLTF('./models/woman.gltf');
     const { actions, names } = useAnimations(animations, group);
 
     useEffect(() => {
         setAnimations(names);
     }, [names]);
+
+    useEffect(() => {
+        actions[names[animationIndex]].reset().fadeIn(0.5).play();
+        return () => {
+            actions[names[animationIndex]].fadeOut(0.5);
+        };
+    }, [animationIndex]);
 
     return (
         <group ref={group} {...props} dispose={null}>
