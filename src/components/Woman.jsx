@@ -4,12 +4,13 @@ import { useGLTF, useAnimations } from '@react-three/drei';
 export default function Woman(props) {
     const halo = useRef();
     const group = useRef();
+    const { setAnimations } = useCharacterAnimations();
     const { nodes, materials, animations } = useGLTF('./models/woman.gltf');
     const { actions, names } = useAnimations(animations, group);
 
     useEffect(() => {
-        actions[names[0]].reset().fadeIn(0.5).play();
-    }, []);
+        setAnimations(names);
+    }, [names]);
 
     return (
         <group ref={group} {...props} dispose={null}>
