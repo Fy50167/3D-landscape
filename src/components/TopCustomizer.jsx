@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 export default function TopCustomizer() {
     const { shirtColor, setShirtColor } = useCharacterCustomizations();
 
-    const [currentColor, setCurrentColor] = useState('#4D4D4D');
+    const [currentColor, setCurrentColor] = useState('#194D33');
     const handleOnChange = (color) => {
         setCurrentColor(color.hex);
     };
