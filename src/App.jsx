@@ -1,20 +1,8 @@
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas } from '@react-three/fiber';
 import Experience from './components/Experience';
 import Controls from './components/Controls';
-import { easing } from 'maath';
 
 function App() {
-    function Rig() {
-        return useFrame((state, delta) => {
-            easing.damp3(
-                state.camera.position,
-                [1 + state.mouse.x / 4, 1.5 + state.mouse.y / 4, 2.5],
-                0.2,
-                delta
-            );
-        });
-    }
-
     return (
         <>
             <Canvas
@@ -26,8 +14,6 @@ function App() {
             >
                 <color attach='background' args={['lightblue']} />
                 <Experience />
-
-                <Rig />
             </Canvas>
 
             <Controls />
