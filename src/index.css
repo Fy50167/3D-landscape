@@ -68,3 +68,16 @@
 .shirt {
     top: 115px;
 }
+
+.pants {
+    top: 155px;
+}
+
+.compact-picker {
+    width: 220px !important;
+}
+@media screen and (min-width: 768px) {
+    .customizer-div {
+        width: auto;
+    }
+}

@@ -38,6 +38,7 @@ export default function Woman(props) {
     useEffect(() => {
         setHairColor('#4D4D4D');
         setShirtColor('#194D33');
+        setPantsColor('#009CE0');
     }, []);
 
     useFrame((state, delta) => {
@@ -118,9 +119,13 @@ export default function Woman(props) {
                             castShadow
                             name='Mesh019_6'
                             geometry={nodes.Mesh019_6.geometry}
-                            material={materials.Pants}
                             skeleton={nodes.Mesh019_6.skeleton}
-                        />
+                        >
+                            <meshStandardMaterial
+                                {...materials.Pants}
+                                color={pantsColor}
+                            />
+                        </skinnedMesh>
                         <skinnedMesh
                             castShadow
                             name='Mesh019_7'
