@@ -12,7 +12,7 @@ export default function Experience() {
     const { animations, animationIndex, setAnimationIndex } =
         useCharacterAnimations();
 
-    const { cameraMode, setCameraMode } = useCharacterCustomizations();
+    const { cameraMode, setNewCamera } = useCharacterCustomizations();
 
     const setAnimation = (button, animation) => {
         setActiveButton(button);
@@ -21,7 +21,7 @@ export default function Experience() {
 
     const setCamera = (button) => {
         setActiveCamera(button);
-        setCameraMode(button);
+        setNewCamera(button);
     };
 
     return (

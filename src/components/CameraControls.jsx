@@ -1,47 +1,60 @@
 import { useFrame } from '@react-three/fiber';
 import {
-    CameraModes,
     useCharacterCustomizations,
+    CameraModes,
 } from '../contexts/CharacterCustomizations';
-import { easing } from 'maath';
 import * as THREE from 'three';
+import { OrbitControls } from '@react-three/drei';
+
+import { useRef } from 'react';
 
 const cameraPositions = {
-    [CameraModes.FREE]: {
+    ['FREE']: {
         position: new THREE.Vector3(1, 0.5, 2.5),
         target: new THREE.Vector3(0, 0.5, 0),
     },
-    [CameraModes.HEAD]: {
+    ['HEAD']: {
         position: new THREE.Vector3(0, 0.5, 1),
         target: new THREE.Vector3(0, 0.5, 0),
     },
-    [CameraModes.TOP]: {
+    ['TOP']: {
         position: new THREE.Vector3(-0.5, 0.2, 1.5),
-        target: new THREE.Vector3(0, 0.5, 0),
+        target: new THREE.Vector3(0, 0.2, 0),
     },
-    [CameraModes.BOTTOM]: {
+    ['BOTTOM']: {
         position: new THREE.Vector3(0, -0.5, 2.5),
         target: new THREE.Vector3(0, -0.5, 0),
     },
 };
 
 export default function CameraControls() {
-    const { cameraMode, setCameraMode } = useCharacterCustomizations();
+    const { cameraMode, currentCamera, setNewCamera } =
+        useCharacterCustomizations();
+
+    const orbitControls = useRef();
 
     const CameraRig = () => {
         useFrame((state, delta) => {
             state.camera.position.lerp(
                 cameraPositions[cameraMode].position,
-                0.03
+                delta * 3
             );
-            state.camera.lookAt(
-                state.camera.position.lerp(cameraPositions[cameraMode].target)
+
+            orbitControls.current.target.lerp(
+                cameraPositions[cameraMode].target,
+                3 * delta
             );
         });
     };
 
     return (
         <>
+            <OrbitControls
+                ref={orbitControls}
+                onStart={() => {
+                    setNewCamera(CameraModes.FREE);
+                }}
+            />
             <CameraRig />
         </>
     );
