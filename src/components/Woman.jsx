@@ -3,7 +3,10 @@ import { useGLTF, useAnimations } from '@react-three/drei';
 import { useCharacterAnimations } from '../contexts/CharacterAnimations';
 import { useFrame } from '@react-three/fiber';
 import { easing } from 'maath';
-import { useCharacterCustomizations } from '../contexts/CharacterCustomizations';
+import {
+    useCharacterCustomizations,
+    CameraModes,
+} from '../contexts/CharacterCustomizations';
 
 export default function Woman(props) {
     const halo = useRef();
@@ -11,8 +14,15 @@ export default function Woman(props) {
     const { setAnimations, animationIndex } = useCharacterAnimations();
     const { nodes, materials, animations } = useGLTF('./models/woman.gltf');
     const { actions, names } = useAnimations(animations, group);
-    const { hairColor, setHairColor, setTopColor, setPantsColor } =
-        useCharacterCustomizations();
+    const {
+        hairColor,
+        setHairColor,
+        shirtColor,
+        setShirtColor,
+        pantsColor,
+        setPantsColor,
+        cameraMode,
+    } = useCharacterCustomizations();
 
     useEffect(() => {
         setAnimations(names);
@@ -27,7 +37,7 @@ export default function Woman(props) {
 
     useEffect(() => {
         setHairColor('#4D4D4D');
-        setTopColor('#194D33');
+        setShirtColor('#194D33');
     }, []);
 
     useFrame((state, delta) => {

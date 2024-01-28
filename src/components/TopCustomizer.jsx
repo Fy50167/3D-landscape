@@ -3,20 +3,21 @@ import { CompactPicker } from 'react-color';
 import { useState, useEffect } from 'react';
 
 export default function TopCustomizer() {
-    const { setTopColor } = useCharacterCustomizations();
+    const { shirtColor, setShirtColor } = useCharacterCustomizations();
 
-    const [currentColor, setCurrentColor] = useState('#194D33');
+    const [currentColor, setCurrentColor] = useState('#4D4D4D');
     const handleOnChange = (color) => {
         setCurrentColor(color.hex);
     };
 
     useEffect(() => {
-        setTopColor(currentColor);
+        setShirtColor(currentColor);
+        console.log(shirtColor);
     }, [currentColor]);
 
     return (
         <>
-            <div className='customizer-div'>
+            <div className='customizer-div shirt'>
                 <CompactPicker
                     color={currentColor}
                     onChangeComplete={handleOnChange}

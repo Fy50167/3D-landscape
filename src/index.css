@@ -57,10 +57,14 @@
 
 .customizer-div {
     position: absolute;
-    top: 30px;
+    top: 75px;
     right: 150px;
     display: flex;
     flex-direction: column;
     width: auto;
     background-color: white;
+}
+
+.shirt {
+    top: 115px;
 }

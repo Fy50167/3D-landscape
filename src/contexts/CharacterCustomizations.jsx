@@ -12,10 +12,9 @@ export const CameraModes = {
 export const CharacterCustomizationsProvider = (props) => {
     const [cameraMode, setCameraMode] = useState(CameraModes.FREE);
     const [currentCamera, setCurrentCamera] = useState(CameraModes.FREE);
-    const [hairColor, setHairColor] = useState();
-    const [shirtColor, setShirtColor] = useState();
-    const [pantsColor, setPantsColor] = useState();
-    const [shoesColor, setShoesColor] = useState();
+    const [hairColor, setHairColor] = useState('');
+    const [shirtColor, setShirtColor] = useState('');
+    const [pantsColor, setPantsColor] = useState('');
 
     const setNewCamera = (camera) => {
         setCurrentCamera(cameraMode);
@@ -30,7 +29,9 @@ export const CharacterCustomizationsProvider = (props) => {
                 setNewCamera,
                 hairColor,
                 setHairColor,
+                shirtColor,
                 setShirtColor,
+                pantsColor,
                 setPantsColor,
             }}
         >
