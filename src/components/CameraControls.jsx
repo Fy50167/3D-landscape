@@ -49,12 +49,7 @@ export default function CameraControls() {
 
     return (
         <>
-            <OrbitControls
-                ref={orbitControls}
-                onStart={() => {
-                    setNewCamera(CameraModes.FREE);
-                }}
-            />
+            <OrbitControls ref={orbitControls} />
             <CameraRig />
         </>
     );
