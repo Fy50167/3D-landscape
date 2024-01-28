@@ -11,7 +11,7 @@ export default function Woman(props) {
     const { setAnimations, animationIndex } = useCharacterAnimations();
     const { nodes, materials, animations } = useGLTF('./models/woman.gltf');
     const { actions, names } = useAnimations(animations, group);
-    const { hairColor } = useCharacterCustomizations;
+    const { hairColor, setHairColor } = useCharacterCustomizations();
 
     useEffect(() => {
         setAnimations(names);
@@ -23,6 +23,10 @@ export default function Woman(props) {
             actions[names[animationIndex]].fadeOut(0.5);
         };
     }, [animationIndex]);
+
+    useEffect(() => {
+        setHairColor('#4D4D4D');
+    }, []);
 
     useFrame((state, delta) => {
         if (animationIndex === 0) {
@@ -66,9 +70,13 @@ export default function Woman(props) {
                             castShadow
                             name='Mesh019_2'
                             geometry={nodes.Mesh019_2.geometry}
-                            material={materials.Hair}
                             skeleton={nodes.Mesh019_2.skeleton}
-                        />
+                        >
+                            <meshStandardMaterial
+                                {...materials.Hair}
+                                color={hairColor}
+                            />
+                        </skinnedMesh>
                         <skinnedMesh
                             castShadow
                             name='Mesh019_3'
