@@ -3,6 +3,7 @@ import { useGLTF, useAnimations } from '@react-three/drei';
 import { useCharacterAnimations } from '../contexts/CharacterAnimations';
 import { useFrame } from '@react-three/fiber';
 import { easing } from 'maath';
+import { useCharacterCustomizations } from '../contexts/CharacterCustomizations';
 
 export default function Woman(props) {
     const halo = useRef();
@@ -10,6 +11,7 @@ export default function Woman(props) {
     const { setAnimations, animationIndex } = useCharacterAnimations();
     const { nodes, materials, animations } = useGLTF('./models/woman.gltf');
     const { actions, names } = useAnimations(animations, group);
+    const { hairColor } = useCharacterCustomizations;
 
     useEffect(() => {
         setAnimations(names);

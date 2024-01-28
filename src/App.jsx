@@ -1,6 +1,7 @@
 import { Canvas } from '@react-three/fiber';
 import Experience from './components/Experience';
 import Controls from './components/Controls';
+import Customizations from './components/Customizations';
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
             </Canvas>
 
             <Controls />
+            <Customizations />
         </>
     );
 }

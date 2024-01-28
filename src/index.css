@@ -54,3 +54,13 @@
     background-color: rgb(0, 145, 255);
     color: white;
 }
+
+.customizer-div {
+    position: absolute;
+    top: 30px;
+    right: 150px;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    background-color: white;
+}
