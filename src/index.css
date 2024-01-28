@@ -21,6 +21,15 @@
     width: auto;
 }
 
+.camera-controls {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+
 .btn {
     background-color: white;
     border-radius: 5px;

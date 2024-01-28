@@ -7,7 +7,7 @@ import {
 
 export default function Experience() {
     const [activeButton, setActiveButton] = useState('GuitarPlaying');
-    const [activeCamera, setActiveCamera] = useState('');
+    const [activeCamera, setActiveCamera] = useState('FREE');
 
     const { animations, animationIndex, setAnimationIndex } =
         useCharacterAnimations();
@@ -27,11 +27,11 @@ export default function Experience() {
     return (
         <>
             <div className='camera-controls'>
-                {CameraModes.map((mode, index) => (
+                {Object.keys(CameraModes).map((mode, index) => (
                     <input
                         type='button'
                         className={`btn ${
-                            activeCamera == button ? 'active' : ''
+                            activeCamera == mode ? 'active' : ''
                         }`}
                         id={mode}
                         key={mode}
