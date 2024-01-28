@@ -10,16 +10,13 @@ export const CameraModes = {
 };
 
 export const CharacterCustomizationsProvider = (props) => {
-    const [cameraMode, setCameraMode] = useState('');
-    const [animations, setAnimations] = useState([]);
+    const [cameraMode, setCameraMode] = useState(CameraModes.FREE);
 
     return (
         <CharacterCustomizationsContext.Provider
             value={{
-                animationIndex,
-                setAnimationIndex,
-                animations,
-                setAnimations,
+                cameraMode,
+                setCameraMode,
             }}
         >
             {props.children}
